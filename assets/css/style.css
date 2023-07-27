@@ -580,7 +580,7 @@ section {
 
 .clients img:hover {
   filter: none;
-  transform: scale(1.1);
+  transform: scale(2);
 }
 
 @media (max-width: 768px) {
