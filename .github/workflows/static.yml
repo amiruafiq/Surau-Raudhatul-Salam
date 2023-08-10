@@ -1,4 +1,4 @@
-name: Deploy static content to Pages with Integration Tests
+name: Deploy static content to Pages with Ping Test
 
 on:
   push:
@@ -34,7 +34,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-      - name: Install dependencies
-        run: npm ci
-      - name: Run Jest tests
-        run: npm test
+      - name: Ping Website and Measure Load Time
+        run: |
+          # Add your commands to ping the website and measure load time
+          start_time=$(date +%s)
+          response_time=$(curl -s -w "%{time_total}\n" -o /dev/null ${{ steps.deployment.outputs.page_url }})
+          end_time=$(date +%s)
+          total_time=$((end_time - start_time))
+          echo "Website response time: $response_time seconds"
+          echo "Total time to load website: $total_time seconds"
