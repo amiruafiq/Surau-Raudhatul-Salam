@@ -1,30 +1,26 @@
-name: Deploy static content to Pages with Ping Test
-
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
     branches:
       - main
       - develop
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
         uses: actions/checkout@v3
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
@@ -36,7 +32,6 @@ jobs:
         uses: actions/deploy-pages@v2
       - name: Ping Website and Measure Load Time
         run: |
-          # Add your commands to ping the website and measure load time
           start_time=$(date +%s)
           response_time=$(curl -s -w "%{time_total}\n" -o /dev/null ${{ steps.deployment.outputs.page_url }})
           end_time=$(date +%s)
