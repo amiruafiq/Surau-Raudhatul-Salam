@@ -20,30 +20,3 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
-
-      - name: Label Pull Request
-        uses: actions/labeler@v4
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          config: |
-            labels:
-              - name: "bug"
-                path:
-                  - "src/**/*.js"
-
-              - name: "feature"
-                path:
-                  - "src/**/*.jsx"
-                  - "src/**/*.ts"
-                  - "src/**/*.tsx"
-
-              - name: "documentation"
-                path:
-                  - "docs/**/*"
-                  - "README.md"
-
-              - name: "enhancement"
-                path:
-                  - "src/**/*.css"
-                  - "src/**/*.scss"
-                  - "src/**/*.less"
