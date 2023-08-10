@@ -7,6 +7,28 @@ on:
       - develop
 
 jobs:
+  # -------------------------- #
+  # Entry                      #
+  # -------------------------- #
+
+  branch_check:
+    name: Branch Check
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: write
+      id-token: write
+    outputs:
+      branch: ${{ steps.get_branch.outputs.branch }}
+    steps:
+      - name: Get current branch
+        id: get_branch
+        run: |
+          raw="${{ github.event.base_ref }}"
+          branch="${raw#refs/heads/}"
+          echo "branch=$branch" >> $GITHUB_OUTPUT
+          echo "Branch is $branch."
+jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
