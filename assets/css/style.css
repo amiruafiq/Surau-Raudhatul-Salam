@@ -1194,6 +1194,15 @@ section {
 /*--------------------------------------------------------------
 # Pricing
 --------------------------------------------------------------*/
+
+/* Add this CSS to your stylesheet or within a style tag in your HTML */
+.qr-code-img {
+  max-width: 100%;  /* Set the maximum width to 100% of its container */
+  height: auto;     /* Maintain the aspect ratio */
+  display: block;   /* Remove any default styling that may affect the display */
+  margin: auto;     /* Center the image within its container */
+}
+
 .pricing .row {
   padding-top: 40px;
 }
