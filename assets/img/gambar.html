@@ -1,0 +1,31 @@
+<!-- ======= Gambar ======= -->
+<section class="portfolio" id="portfolio">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Gambar</h2>
+        <p>Bahagian pembinaan surau dari pelbagai sudut</p>
+      </div>
+      <ul class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100" id="portfolio-flters">
+        <li class="filter-active" data-filter=".filter-RuangSolat">Ruang Solat</li>
+        <li data-filter=".filter-Pandangan">Pandangan</li>
+        <li data-filter=".filter-Minaret">Minaret</li>
+        <li data-filter=".filter-RuangTerbuka">Ruang Terbuka</li>
+        <li data-filter="*">All</li>
+      </ul>
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+        <!-- Your portfolio items go here -->
+      </div>
+    </div>
+  </section><!-- Gambar -->
+  
+  <!-- BaguetteBox CSS link -->
+  <link rel="stylesheet" href="https://unpkg.com/baguettebox.js/dist/baguetteBox.min.css">
+  
+  <!-- BaguetteBox JavaScript -->
+  <script src="https://unpkg.com/baguettebox.js/dist/baguetteBox.min.js"></script>
+  <script>
+    baguetteBox.run('.portfolio-container', {
+      animation: 'fadeIn',
+    });
+  </script>
+  
