@@ -1192,6 +1192,25 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Team — Initials Avatar (no photo placeholder)
+--------------------------------------------------------------*/
+.team .member .pic .initials-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #47b2e4, #37517e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Jost", sans-serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+/*--------------------------------------------------------------
 # Pricing
 --------------------------------------------------------------*/
 
