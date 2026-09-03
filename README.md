@@ -13,8 +13,8 @@ Live site: **https://surauraudhatulsalam.com**
 | Type | Static HTML site (no build step) |
 | Template | [Arsha](https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/) by BootstrapMade, Bootstrap 5 |
 | Hosting | GitHub Pages, deployed from `main` branch, root directory |
-| Domain registrar | AWS Route 53 Domains (account `AFIQ CLOUD`) |
-| DNS | AWS Route 53 hosted zone `Z05081721WHMX7MHLMGKH` |
+| Domain registrar | AWS Route 53 Domains |
+| DNS | AWS Route 53 public hosted zone for `surauraudhatulsalam.com` |
 | TLS | Let's Encrypt, issued and auto-renewed by GitHub Pages, HTTPS enforced |
 | Domain verification | Verified on GitHub Pages (takeover protection) |
 
@@ -77,7 +77,7 @@ The current GitHub Pages IP addresses are published in the [GitHub Pages custom 
 | Transfer lock | On |
 | Privacy protection | On |
 
-The domain lapsed once in 2026 and had to be re-registered. Keep auto-renew enabled and make sure the payment method and contact email on the AWS account stay valid. AWS emails renewal notices to the registrant contact starting 45 days before expiry.
+Keep auto-renew enabled and make sure the payment method and contact email on the AWS account stay valid. AWS emails renewal notices to the registrant contact starting 45 days before expiry.
 
 ## Runbook: site is down
 
@@ -93,14 +93,16 @@ dig +short www.surauraudhatulsalam.com CNAME
 Expected: the four `185.199.x.153` addresses and `amiruafiq.github.io.`. If empty, the A / AAAA / CNAME records are missing from the hosted zone. Re-create them with the table above (AWS CLI example):
 
 ```bash
+ZONE_ID=$(aws route53 list-hosted-zones-by-name --dns-name surauraudhatulsalam.com \
+  --query 'HostedZones[?Name==`surauraudhatulsalam.com.`]|[0].Id' --output text | sed 's|/hostedzone/||')
 aws route53 change-resource-record-sets \
-  --hosted-zone-id Z05081721WHMX7MHLMGKH \
+  --hosted-zone-id "$ZONE_ID" \
   --change-batch file://dns-records.json
 ```
 
 **2. Does the registrar point to the right hosted zone?**
 
-The name servers under Route 53 > Registered domains must match the NS record set inside hosted zone `Z05081721WHMX7MHLMGKH`. If the domain was re-registered, a second empty hosted zone may have been created; keep the one with records and update the registrar name servers to match.
+The name servers under Route 53 > Registered domains must match the NS record set inside the hosted zone. If the domain was re-registered, a second empty hosted zone may have been created; keep the one with records and update the registrar name servers to match.
 
 **3. Is GitHub Pages healthy?**
 
