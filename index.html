@@ -25,6 +25,12 @@
   ======================================================== -->
 </head>
 <body>
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/ms_MY/sdk.js#xfbml=1&version=v19.0"
+    nonce="facebook-sdk">
+  </script>
   <!-- ======= Header ======= -->
   <header class="fixed-top" id="header">
     <div class="container d-flex align-items-center">
@@ -594,7 +600,19 @@
             </div>
           </div><!-- Facebook Page Embed Column -->
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <iframe frameborder="0" height="500" scrolling="no" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSurauRaudhatulSalam&tabs=timeline&width=100%&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" style="border:none;overflow:hidden" width="100%"></iframe>
+            <div class="fb-page"
+              data-href="https://www.facebook.com/SurauRaudhatulSalam"
+              data-tabs="timeline"
+              data-width="500"
+              data-height="600"
+              data-small-header="false"
+              data-adapt-container-width="true"
+              data-hide-cover="false"
+              data-show-facepile="true">
+              <blockquote cite="https://www.facebook.com/SurauRaudhatulSalam" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/SurauRaudhatulSalam">Surau Raudhatul Salam</a>
+              </blockquote>
+            </div>
           </div>
         </div>
       </div>
