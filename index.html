@@ -600,18 +600,21 @@
             </div>
           </div><!-- Facebook Page Embed Column -->
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <div class="fb-page"
-              data-href="https://www.facebook.com/SurauRaudhatulSalam"
-              data-tabs="timeline"
-              data-width="500"
-              data-height="600"
-              data-small-header="false"
-              data-adapt-container-width="true"
-              data-hide-cover="false"
-              data-show-facepile="true">
-              <blockquote cite="https://www.facebook.com/SurauRaudhatulSalam" class="fb-xfbml-parse-ignore">
-                <a href="https://www.facebook.com/SurauRaudhatulSalam">Surau Raudhatul Salam</a>
-              </blockquote>
+            <div id="fb-page-wrapper" style="width:100%; overflow:hidden;">
+              <div class="fb-page"
+                id="fb-page-widget"
+                data-href="https://www.facebook.com/SurauRaudhatulSalam"
+                data-tabs="timeline"
+                data-width="500"
+                data-height="600"
+                data-small-header="false"
+                data-adapt-container-width="true"
+                data-hide-cover="false"
+                data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/SurauRaudhatulSalam" class="fb-xfbml-parse-ignore">
+                  <a href="https://www.facebook.com/SurauRaudhatulSalam">Surau Raudhatul Salam</a>
+                </blockquote>
+              </div>
             </div>
           </div>
         </div>
@@ -726,6 +729,38 @@
   </script> <!-- Template Main JS File -->
    
   <script src="assets/js/main.js">
+  </script>
+
+  <!-- Facebook Page widget responsive resize -->
+  <script>
+    function resizeFbWidget() {
+      var wrapper = document.getElementById('fb-page-wrapper');
+      var widget = document.getElementById('fb-page-widget');
+      if (!wrapper || !widget) return;
+      var width = wrapper.offsetWidth;
+      // FB SDK minimum is 180px, maximum is 500px
+      width = Math.min(500, Math.max(180, width));
+      widget.setAttribute('data-width', width);
+      if (window.FB) {
+        window.FB.XFBML.parse(wrapper);
+      }
+    }
+
+    // Run after FB SDK is ready
+    window.fbAsyncInit = (function(originalInit) {
+      return function() {
+        if (originalInit) originalInit();
+        FB.init({ xfbml: true, version: 'v19.0' });
+        resizeFbWidget();
+      };
+    })(window.fbAsyncInit);
+
+    // Re-render on window resize (debounced)
+    var fbResizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(fbResizeTimer);
+      fbResizeTimer = setTimeout(resizeFbWidget, 250);
+    });
   </script>
 </body>
 </html>
