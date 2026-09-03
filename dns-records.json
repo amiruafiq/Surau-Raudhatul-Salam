@@ -1,0 +1,44 @@
+{
+  "Comment": "Point surauraudhatulsalam.com at GitHub Pages",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "surauraudhatulsalam.com",
+        "Type": "A",
+        "TTL": 300,
+        "ResourceRecords": [
+          { "Value": "185.199.108.153" },
+          { "Value": "185.199.109.153" },
+          { "Value": "185.199.110.153" },
+          { "Value": "185.199.111.153" }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "surauraudhatulsalam.com",
+        "Type": "AAAA",
+        "TTL": 300,
+        "ResourceRecords": [
+          { "Value": "2606:50c0:8000::153" },
+          { "Value": "2606:50c0:8001::153" },
+          { "Value": "2606:50c0:8002::153" },
+          { "Value": "2606:50c0:8003::153" }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "www.surauraudhatulsalam.com",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          { "Value": "amiruafiq.github.io" }
+        ]
+      }
+    }
+  ]
+}
